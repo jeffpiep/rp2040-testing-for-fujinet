@@ -4,6 +4,12 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
+// this example outputs a register bit addressed by 4 GPIOs
+// the register word is put to the PIO by the main program
+// the PIO machine reads the 4 GPIOs then
+// selects the bit from the register then 
+// outputs the bit on a fifth GPIO
+
 #include <stdio.h>
 
 #include "pico/stdlib.h"
@@ -22,7 +28,7 @@ int main() {
     printf("Loaded program at %d\n", offset);
 
     pio_phases(pio, 0, offset, 10);
-    pio_sm_put_blocking(pio, 0, 0b1001011001010010);
+    pio_sm_put_blocking(pio, 0, 0b1001011001010010); // send the register word to the PIO
     while (true)
     {}
     }
