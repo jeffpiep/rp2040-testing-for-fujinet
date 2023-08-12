@@ -24,7 +24,7 @@ void commands_program_init(PIO pio, uint sm, uint offset, uint pin) {
    sm_config_set_out_pins(&c, pin, 1);
    // start at GPIO2 to read in the commands
    sm_config_set_in_pins(&c, 2); // start at GPIO 2 for the commands
-   // there are 4 wires to read for latch mux, shift to the right, no autopull
+   // there are 4 wires to read for latch mux, shift to the left, autopush
    sm_config_set_in_shift(&c, false, true, 4);
    // sm_config_set_out_shift(&c, true, false, 1); // shift to the right
    // set pin as a GPIO output connected to this SM
